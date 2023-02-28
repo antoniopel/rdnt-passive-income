@@ -21,7 +21,7 @@ function distributeUsdc(simulate = false, ctx = null) {
     isDistributionRunning = true;
     ctx.reply(`[+] Simulating USDC output, check back in a few minutes...`);
 
-    let appendBroadcast = simulate ? "--broadcast" : "";
+    let appendBroadcast = (simulate == false) ? "--broadcast" : "";
     exec(
       `forge script script/RDC.s.sol ${appendBroadcast} --skip-simulation --fork-url https://arb1.arbitrum.io/rpc --json | grep -oE '{.*}'`,
       (error, stdout, stderr) => {
