@@ -23,7 +23,7 @@ function distributeUsdc(simulate = false, ctx = null) {
 
     let appendBroadcast = (simulate == false) ? "--broadcast" : "";
     exec(
-      `forge script script/RDC.s.sol ${appendBroadcast} --skip-simulation --fork-url https://arb1.arbitrum.io/rpc --json | grep -oE '{.*}'`,
+      `forge script script/RDC.s.sol ${appendBroadcast} --skip-simulation --fork-url https://arb1.arbitrum.io/rpc --json | grep -oE '\{.*\}'`,
       (error, stdout, stderr) => {
         if (error) {
           isDistributionRunning = false;
